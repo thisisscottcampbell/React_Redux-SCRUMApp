@@ -4,26 +4,37 @@ import {
 	LOGS_ERROR,
 	ADD_LOG,
 	DELETE_LOG,
-	SET_CURRENT,
-	CLEAR_CURRENT,
 	UPDATE_LOG,
 	SEARCH_LOGS,
+	SET_CURRENT,
+	CLEAR_CURRENT,
 } from './types';
-import axios from 'axios';
 
-const LOGS = 'http://localhost:5000/logs';
+// export const getLogs = () => {
+//   return async dispatch => {
+//     setLoading();
 
-//get curent logs
+//     const res = await fetch('/logs');
+//     const data = await res.json();
+
+//     dispatch({
+//       type: GET_LOGS,
+//       payload: data
+//     });
+//   };
+// };
+
+// Get logs from server
 export const getLogs = () => async (dispatch) => {
-	console.log('GET LOGS');
 	try {
 		setLoading();
 
-		const res = await axios.get(LOGS);
+		const res = await fetch('/logs');
+		const data = await res.json();
 
 		dispatch({
 			type: GET_LOGS,
-			payload: res.data,
+			payload: data,
 		});
 	} catch (err) {
 		dispatch({
@@ -33,12 +44,12 @@ export const getLogs = () => async (dispatch) => {
 	}
 };
 
-//post new log
+// Add new log
 export const addLog = (log) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch(LOGS, {
+		const res = await fetch('/logs', {
 			method: 'POST',
 			body: JSON.stringify(log),
 			headers: {
@@ -59,12 +70,12 @@ export const addLog = (log) => async (dispatch) => {
 	}
 };
 
-//delete log
+// Delete log from server
 export const deleteLog = (id) => async (dispatch) => {
 	try {
 		setLoading();
 
-		await fetch(LOGS / `${id}`, {
+		await fetch(`/logs/${id}`, {
 			method: 'DELETE',
 		});
 
@@ -80,12 +91,12 @@ export const deleteLog = (id) => async (dispatch) => {
 	}
 };
 
-//update current log
+// Update log on server
 export const updateLog = (log) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch(LOGS / `${log.id}`, {
+		const res = await fetch(`/logs/${log.id}`, {
 			method: 'PUT',
 			body: JSON.stringify(log),
 			headers: {
@@ -107,34 +118,12 @@ export const updateLog = (log) => async (dispatch) => {
 	}
 };
 
-//set selected data for put req
-export const setCurrent = (log) => {
-	return {
-		type: SET_CURRENT,
-		payload: log,
-	};
-};
-
-//reset selected
-export const clearCurrent = () => {
-	return {
-		type: CLEAR_CURRENT,
-	};
-};
-
-//set loading
-export const setLoading = () => {
-	return {
-		type: SET_LOADING,
-	};
-};
-
-//filter db
-export const filterLogs = (text) => async (dispatch) => {
+// Search server logs
+export const searchLogs = (text) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch(`${LOGS}?q=${text}`);
+		const res = await fetch(`/logs?q=${text}`);
 		const data = await res.json();
 
 		dispatch({
@@ -144,7 +133,29 @@ export const filterLogs = (text) => async (dispatch) => {
 	} catch (err) {
 		dispatch({
 			type: LOGS_ERROR,
-			payload: err,
+			payload: err.response.statusText,
 		});
 	}
+};
+
+// Set current log
+export const setCurrent = (log) => {
+	return {
+		type: SET_CURRENT,
+		payload: log,
+	};
+};
+
+// Clear current log
+export const clearCurrent = () => {
+	return {
+		type: CLEAR_CURRENT,
+	};
+};
+
+// Set loading to true
+export const setLoading = () => {
+	return {
+		type: SET_LOADING,
+	};
 };

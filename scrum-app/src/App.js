@@ -5,6 +5,7 @@ import AddButton from './components/layout/AddButton';
 import AddLogModal from './components/logs/AddLogModal';
 import EditLogModal from './components/logs/EditLogModal';
 import TechListModal from './components/techs/TechListModal';
+import AddTechModal from './components/techs/AddTechModal';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { Provider } from 'react-redux';
@@ -16,17 +17,19 @@ const App = () => {
 		M.AutoInit();
 	});
 	return (
-		<div>
-			<Provider store={store}>
+		<Provider store={store}>
+			<>
 				<SearchBar />
 				<div className="container">
 					<AddButton />
 					<AddLogModal />
 					<EditLogModal />
+					<AddTechModal />
+					<TechListModal />
 					<Logs />
 				</div>
-			</Provider>
-		</div>
+			</>
+		</Provider>
 	);
 };
 

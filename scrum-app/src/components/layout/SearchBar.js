@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { filterLogs } from '../../state/actions/logActions';
+import { searchLogs } from '../../state/actions/logActions';
 
-const SearchBar = ({ filterLogs }) => {
+const SearchBar = ({ searchLogs }) => {
 	const text = useRef('');
 
 	const onChange = (e) => {
-		filterLogs(text.current.value);
+		searchLogs(text.current.value);
 	};
 
 	return (
@@ -32,4 +32,4 @@ const SearchBar = ({ filterLogs }) => {
 	);
 };
 
-export default connect(null, { filterLogs })(SearchBar);
+export default connect(null, { searchLogs })(SearchBar);

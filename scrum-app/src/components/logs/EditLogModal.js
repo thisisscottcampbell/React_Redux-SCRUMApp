@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import TechSelectOptions from '../techs/TechSelectOptions';
+import TechSelectOptions from '../techs/TechSelectOptions';
 import { connect } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLog } from '../../state/actions/logActions';
@@ -65,7 +65,7 @@ const EditLogModal = ({ current, updateLog }) => {
 							<option value="" disabled>
 								Select Technician
 							</option>
-							{/* <TechSelectOptions /> */}
+							<TechSelectOptions />
 						</select>
 					</div>
 				</div>
@@ -106,7 +106,7 @@ const modalStyle = {
 };
 
 const mapStateToProps = (state) => ({
-	current: state.logs.current,
+	current: state.log.current,
 });
 
 export default connect(mapStateToProps, { updateLog })(EditLogModal);
