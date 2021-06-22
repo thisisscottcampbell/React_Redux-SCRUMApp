@@ -2,53 +2,53 @@
   "logs": [
     {
       "id": 1,
-      "message": "fixed click handler",
-      "attention": false,
-      "date": "05-15-2021",
-      "tech": "Joe"
+      "message": "this works",
+      "attention": true,
+      "dev": "Scott Campbell",
+      "date": "2021-06-22T14:35:34.604Z"
     },
     {
-      "id": 2,
-      "message": "fixed submit handler",
+      "message": "this also works",
       "attention": false,
-      "date": "05-15-2021",
-      "tech": "Jill"
+      "dev": "Jill Jill",
+      "date": "2021-06-22T14:36:10.401Z",
+      "id": 2
     },
     {
       "id": 3,
-      "message": "fixed throttling",
-      "attention": false,
-      "tech": "west gunn",
-      "date": "2021-06-22T14:04:58.483Z"
+      "message": "And this as well",
+      "attention": true,
+      "dev": "Jack Jack",
+      "date": "2021-06-22T14:37:01.196Z"
     },
     {
       "id": 4,
-      "message": "BOOM!",
-      "attention": true,
-      "tech": "Jack undefined",
-      "date": "2021-06-22T14:04:35.173Z"
+      "message": "And finally...",
+      "attention": false,
+      "dev": "Joe Joe",
+      "date": "2021-06-22T14:36:58.417Z"
     }
   ],
-  "techs": [
+  "devs": [
     {
       "id": 1,
       "firstName": "Joe",
-      "lasName": "Joe"
+      "lastName": "Joe"
     },
     {
       "id": 2,
       "firstName": "Jill",
-      "lasName": "Jill"
+      "lastName": "Jill"
     },
     {
       "id": 3,
       "firstName": "Jack",
-      "lasName": "Jack"
+      "lastName": "Jack"
     },
     {
-      "firstName": "west",
-      "lastName": "gunn",
-      "id": 4
+      "firstName": "Scott",
+      "lastName": "Campbell",
+      "id": 5
     }
   ]
 }

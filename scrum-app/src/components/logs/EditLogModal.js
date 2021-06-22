@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TechSelectOptions from '../techs/TechSelectOptions';
+import DevSelectOptions from '../devs/DevSelectOptions';
 import { connect } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLog } from '../../state/actions/logActions';
@@ -7,34 +7,34 @@ import { updateLog } from '../../state/actions/logActions';
 const EditLogModal = ({ current, updateLog }) => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
-	const [tech, setTech] = useState('');
+	const [dev, setDev] = useState('');
 
 	useEffect(() => {
 		if (current) {
 			setMessage(current.message);
 			setAttention(current.attention);
-			setTech(current.tech);
+			setDev(current.dev);
 		}
 	}, [current]);
 
 	const onSubmit = () => {
-		if (message === '' || tech === '') {
-			M.toast({ html: 'Please enter a message and tech' });
+		if (message === '' || dev === '') {
+			M.toast({ html: 'Please enter a message and dev' });
 		} else {
 			const updLog = {
 				id: current.id,
 				message,
 				attention,
-				tech,
+				dev,
 				date: new Date(),
 			};
 
 			updateLog(updLog);
-			M.toast({ html: `Log updated by ${tech}` });
+			M.toast({ html: `Log updated by ${dev}` });
 
 			// Clear Fields
 			setMessage('');
-			setTech('');
+			setDev('');
 			setAttention(false);
 		}
 	};
@@ -57,15 +57,15 @@ const EditLogModal = ({ current, updateLog }) => {
 				<div className="row">
 					<div className="input-field">
 						<select
-							name="tech"
-							value={tech}
+							name="dev"
+							value={dev}
 							className="browser-default"
-							onChange={(e) => setTech(e.target.value)}
+							onChange={(e) => setDev(e.target.value)}
 						>
 							<option value="" disabled>
-								Select Technician
+								Select devnician
 							</option>
-							<TechSelectOptions />
+							<DevSelectOptions />
 						</select>
 					</div>
 				</div>

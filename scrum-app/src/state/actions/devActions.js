@@ -1,39 +1,39 @@
 import {
-	GET_TECHS,
-	ADD_TECH,
-	DELETE_TECH,
+	GET_DEVS,
+	ADD_DEV,
+	DELETE_DEV,
 	SET_LOADING,
-	TECHS_ERROR,
+	DEVS_ERROR,
 } from './types';
 
-// Get techs from server
-export const getTechs = () => async (dispatch) => {
+// Get devs
+export const getDevs = () => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch('/techs');
+		const res = await fetch('/devs');
 		const data = await res.json();
 
 		dispatch({
-			type: GET_TECHS,
+			type: GET_DEVS,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: TECHS_ERROR,
+			type: DEVS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
-// Add technician to server
-export const addTech = (tech) => async (dispatch) => {
+// Add dev
+export const addDev = (dev) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch('/techs', {
+		const res = await fetch('/devs', {
 			method: 'POST',
-			body: JSON.stringify(tech),
+			body: JSON.stringify(dev),
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -41,32 +41,33 @@ export const addTech = (tech) => async (dispatch) => {
 		const data = await res.json();
 
 		dispatch({
-			type: ADD_TECH,
+			type: ADD_DEV,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: TECHS_ERROR,
+			type: DEVS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
-export const deleteTech = (id) => async (dispatch) => {
+// delete dev
+export const deleteDev = (id) => async (dispatch) => {
 	try {
 		setLoading();
 
-		await fetch(`/techs/${id}`, {
+		await fetch(`/devs/${id}`, {
 			method: 'DELETE',
 		});
 
 		dispatch({
-			type: DELETE_TECH,
+			type: DELETE_DEV,
 			payload: id,
 		});
 	} catch (err) {
 		dispatch({
-			type: TECHS_ERROR,
+			type: DEVS_ERROR,
 			payload: err.response.statusText,
 		});
 	}

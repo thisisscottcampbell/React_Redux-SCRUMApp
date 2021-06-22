@@ -1,35 +1,35 @@
 import {
-	GET_TECHS,
-	ADD_TECH,
-	DELETE_TECH,
+	GET_DEVS,
+	ADD_DEV,
+	DELETE_DEV,
 	SET_LOADING,
-	TECHS_ERROR,
+	DEVS_ERROR,
 } from '../actions/types';
 
 const initialState = {
-	techs: null,
+	devs: null,
 	loading: false,
 	error: null,
 };
 
-export const techReducer = (state = initialState, action) => {
+export const devReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_TECHS:
+		case GET_DEVS:
 			return {
 				...state,
-				techs: action.payload,
+				devs: action.payload,
 				loading: false,
 			};
-		case ADD_TECH:
+		case ADD_DEV:
 			return {
 				...state,
-				techs: [...state.techs, action.payload],
+				devs: [...state.devs, action.payload],
 				loading: false,
 			};
-		case DELETE_TECH:
+		case DELETE_DEV:
 			return {
 				...state,
-				techs: state.techs.filter((tech) => tech.id !== action.payload),
+				devs: state.devs.filter((dev) => dev.id !== action.payload),
 				loading: false,
 			};
 		case SET_LOADING:
@@ -37,7 +37,7 @@ export const techReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-		case TECHS_ERROR:
+		case DEVS_ERROR:
 			console.error(action.payload);
 			return {
 				...state,

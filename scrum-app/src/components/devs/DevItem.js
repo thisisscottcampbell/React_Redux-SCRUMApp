@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteTech } from '../../state/actions/techActions';
+import { deleteDev } from '../../state/actions/devActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const TechItem = ({ tech: { id, firstName, lastName }, deleteTech }) => {
+const DevItem = ({ dev: { id, firstName, lastName }, deleteDev }) => {
 	const onDelete = () => {
-		deleteTech(id);
-		M.toast({ html: 'Technician deleted' });
+		deleteDev(id);
+		M.toast({ html: 'Dev deleted' });
 	};
 
 	return (
@@ -21,4 +21,4 @@ const TechItem = ({ tech: { id, firstName, lastName }, deleteTech }) => {
 	);
 };
 
-export default connect(null, { deleteTech })(TechItem);
+export default connect(null, { deleteDev })(DevItem);

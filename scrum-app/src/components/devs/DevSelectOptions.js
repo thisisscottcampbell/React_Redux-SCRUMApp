@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getTechs } from '../../state/actions/techActions';
+import { getDevs } from '../../state/actions/devActions';
 
-const TechSelectOptions = ({ getTechs, tech: { techs, loading } }) => {
+const DevSelectOptions = ({ getDevs, dev: { devs, loading } }) => {
 	useEffect(() => {
-		getTechs();
+		getDevs();
 		// eslint-disable-next-line
 	}, []);
 
 	return (
 		!loading &&
-		techs !== null &&
-		techs.map((t) => (
+		devs !== null &&
+		devs.map((t) => (
 			<option key={t.id} value={`${t.firstName} ${t.lastName}`}>
 				{t.firstName} {t.lastName}
 			</option>
@@ -20,7 +20,7 @@ const TechSelectOptions = ({ getTechs, tech: { techs, loading } }) => {
 };
 
 const mapStateToProps = (state) => ({
-	tech: state.tech,
+	dev: state.dev,
 });
 
-export default connect(mapStateToProps, { getTechs })(TechSelectOptions);
+export default connect(mapStateToProps, { getDevs })(DevSelectOptions);

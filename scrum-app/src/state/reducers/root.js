@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { logReducer } from './logReducer';
-import { techReducer } from './techsReducer';
+import { devReducer } from './devReducer';
 
 export const rootReducer = combineReducers({
 	log: logReducer,
-	tech: techReducer,
+	dev: devReducer,
 });
