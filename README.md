@@ -1,1 +1,1 @@
-# React_Redux-SCRUMLoggerApp
+# React_Redux-SCRUMApp
