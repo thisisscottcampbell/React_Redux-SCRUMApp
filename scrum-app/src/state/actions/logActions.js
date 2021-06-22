@@ -10,7 +10,7 @@ import {
 	CLEAR_CURRENT,
 } from './types';
 
-// Get logs from server
+// get tickets
 export const getLogs = () => async (dispatch) => {
 	try {
 		setLoading();
@@ -30,7 +30,7 @@ export const getLogs = () => async (dispatch) => {
 	}
 };
 
-// Add new log
+// create ticket
 export const addLog = (log) => async (dispatch) => {
 	try {
 		setLoading();
@@ -56,7 +56,7 @@ export const addLog = (log) => async (dispatch) => {
 	}
 };
 
-// Delete log from server
+// delete ticket
 export const deleteLog = (id) => async (dispatch) => {
 	try {
 		setLoading();
@@ -77,7 +77,7 @@ export const deleteLog = (id) => async (dispatch) => {
 	}
 };
 
-// Update log on server
+// update ticket
 export const updateLog = (log) => async (dispatch) => {
 	try {
 		setLoading();
@@ -104,7 +104,7 @@ export const updateLog = (log) => async (dispatch) => {
 	}
 };
 
-// Search server logs
+// filter tickets
 export const searchLogs = (text) => async (dispatch) => {
 	try {
 		setLoading();
@@ -124,7 +124,7 @@ export const searchLogs = (text) => async (dispatch) => {
 	}
 };
 
-// Set current log
+// set current ticket data for update
 export const setCurrent = (log) => {
 	return {
 		type: SET_CURRENT,
@@ -132,14 +132,14 @@ export const setCurrent = (log) => {
 	};
 };
 
-// Clear current log
+// clear update data
 export const clearCurrent = () => {
 	return {
 		type: CLEAR_CURRENT,
 	};
 };
 
-// Set loading to true
+// set loading to true
 export const setLoading = () => {
 	return {
 		type: SET_LOADING,

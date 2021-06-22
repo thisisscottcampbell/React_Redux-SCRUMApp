@@ -6,7 +6,7 @@ import {
 	DEVS_ERROR,
 } from './types';
 
-// Get devs
+// get devs
 export const getDevs = () => async (dispatch) => {
 	try {
 		setLoading();
@@ -26,7 +26,7 @@ export const getDevs = () => async (dispatch) => {
 	}
 };
 
-// Add dev
+// create dev
 export const addDev = (dev) => async (dispatch) => {
 	try {
 		setLoading();
@@ -73,7 +73,7 @@ export const deleteDev = (id) => async (dispatch) => {
 	}
 };
 
-// Set loading to true
+// set loading to true
 export const setLoading = () => {
 	return {
 		type: SET_LOADING,
