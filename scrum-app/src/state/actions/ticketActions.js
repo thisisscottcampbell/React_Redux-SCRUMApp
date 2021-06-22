@@ -1,43 +1,43 @@
 import {
-	GET_LOGS,
+	GET_TICKETS,
 	SET_LOADING,
-	LOGS_ERROR,
-	ADD_LOG,
-	DELETE_LOG,
-	UPDATE_LOG,
-	SEARCH_LOGS,
+	TICKETS_ERROR,
+	ADD_TICKET,
+	DELETE_TICKET,
+	UPDATE_TICKET,
+	SEARCH_TICKETS,
 	SET_CURRENT,
 	CLEAR_CURRENT,
 } from './types';
 
 // get tickets
-export const getLogs = () => async (dispatch) => {
+export const getTickets = () => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch('/logs');
+		const res = await fetch('/tickets');
 		const data = await res.json();
 
 		dispatch({
-			type: GET_LOGS,
+			type: GET_TICKETS,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: LOGS_ERROR,
+			type: TICKETS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
 // create ticket
-export const addLog = (log) => async (dispatch) => {
+export const addTicket = (ticket) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch('/logs', {
+		const res = await fetch('/tickets', {
 			method: 'POST',
-			body: JSON.stringify(log),
+			body: JSON.stringify(ticket),
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -45,46 +45,46 @@ export const addLog = (log) => async (dispatch) => {
 		const data = await res.json();
 
 		dispatch({
-			type: ADD_LOG,
+			type: ADD_TICKET,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: LOGS_ERROR,
+			type: TICKETS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
 // delete ticket
-export const deleteLog = (id) => async (dispatch) => {
+export const deleteTicket = (id) => async (dispatch) => {
 	try {
 		setLoading();
 
-		await fetch(`/logs/${id}`, {
+		await fetch(`/tickets/${id}`, {
 			method: 'DELETE',
 		});
 
 		dispatch({
-			type: DELETE_LOG,
+			type: DELETE_TICKET,
 			payload: id,
 		});
 	} catch (err) {
 		dispatch({
-			type: LOGS_ERROR,
+			type: TICKETS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
 // update ticket
-export const updateLog = (log) => async (dispatch) => {
+export const updateTicket = (ticket) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch(`/logs/${log.id}`, {
+		const res = await fetch(`/tickets/${ticket.id}`, {
 			method: 'PUT',
-			body: JSON.stringify(log),
+			body: JSON.stringify(ticket),
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -93,42 +93,42 @@ export const updateLog = (log) => async (dispatch) => {
 		const data = await res.json();
 
 		dispatch({
-			type: UPDATE_LOG,
+			type: UPDATE_TICKET,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: LOGS_ERROR,
+			type: TICKETS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
 // filter tickets
-export const searchLogs = (text) => async (dispatch) => {
+export const searchTickets = (text) => async (dispatch) => {
 	try {
 		setLoading();
 
-		const res = await fetch(`/logs?q=${text}`);
+		const res = await fetch(`/tickets?q=${text}`);
 		const data = await res.json();
 
 		dispatch({
-			type: SEARCH_LOGS,
+			type: SEARCH_TICKETS,
 			payload: data,
 		});
 	} catch (err) {
 		dispatch({
-			type: LOGS_ERROR,
+			type: TICKETS_ERROR,
 			payload: err.response.statusText,
 		});
 	}
 };
 
 // set current ticket data for update
-export const setCurrent = (log) => {
+export const setCurrent = (ticket) => {
 	return {
 		type: SET_CURRENT,
-		payload: log,
+		payload: ticket,
 	};
 };
 

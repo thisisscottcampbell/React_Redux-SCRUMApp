@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { logReducer } from './logReducer';
+import { ticketReducer } from './ticketReducer';
 import { devReducer } from './devReducer';
 
 export const rootReducer = combineReducers({
-	log: logReducer,
+	ticket: ticketReducer,
 	dev: devReducer,
 });

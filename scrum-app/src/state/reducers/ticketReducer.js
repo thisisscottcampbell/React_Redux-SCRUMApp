@@ -1,53 +1,53 @@
 import {
-	GET_LOGS,
+	GET_TICKETS,
 	SET_LOADING,
-	LOGS_ERROR,
-	ADD_LOG,
-	DELETE_LOG,
-	UPDATE_LOG,
-	SEARCH_LOGS,
+	TICKETS_ERROR,
+	ADD_TICKET,
+	DELETE_TICKET,
+	UPDATE_TICKET,
+	SEARCH_TICKETS,
 	SET_CURRENT,
 	CLEAR_CURRENT,
 } from '../actions/types';
 
 const initialState = {
-	logs: null,
+	tickets: null,
 	current: null,
 	loading: false,
 	error: null,
 };
 
-export const logReducer = (state = initialState, action) => {
+export const ticketReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_LOGS:
+		case GET_TICKETS:
 			return {
 				...state,
-				logs: action.payload,
+				tickets: action.payload,
 				loading: false,
 			};
-		case ADD_LOG:
+		case ADD_TICKET:
 			return {
 				...state,
-				logs: [...state.logs, action.payload],
+				tickets: [...state.tickets, action.payload],
 				loading: false,
 			};
-		case DELETE_LOG:
+		case DELETE_TICKET:
 			return {
 				...state,
-				logs: state.logs.filter((log) => log.id !== action.payload),
+				tickets: state.tickets.filter((ticket) => ticket.id !== action.payload),
 				loading: false,
 			};
-		case UPDATE_LOG:
+		case UPDATE_TICKET:
 			return {
 				...state,
-				logs: state.logs.map((log) =>
-					log.id === action.payload.id ? action.payload : log
+				tickets: state.tickets.map((ticket) =>
+					ticket.id === action.payload.id ? action.payload : ticket
 				),
 			};
-		case SEARCH_LOGS:
+		case SEARCH_TICKETS:
 			return {
 				...state,
-				logs: action.payload,
+				tickets: action.payload,
 			};
 		case SET_CURRENT:
 			return {
@@ -64,7 +64,7 @@ export const logReducer = (state = initialState, action) => {
 				...state,
 				loading: true,
 			};
-		case LOGS_ERROR:
+		case TICKETS_ERROR:
 			console.error(action.payload);
 			return {
 				...state,

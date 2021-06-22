@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import SearchBar from './components/layout/SearchBar';
-import Logs from './components/logs/Logs';
+import Tickets from './components/tickets/Tickets';
 import AddButton from './components/layout/AddButton';
-import AddLogModal from './components/logs/AddLogModal';
-import EditLogModal from './components/logs/EditLogModal';
+import AddTicketModal from './components/tickets/AddTicketModal';
+import EditTicketModal from './components/tickets/EditTicketModal';
 import DevListModal from './components/devs/DevListModal';
 import AddDevModal from './components/devs/AddDevModal';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -22,11 +22,11 @@ const App = () => {
 				<SearchBar />
 				<div className="container">
 					<AddButton />
-					<AddLogModal />
-					<EditLogModal />
+					<AddTicketModal />
+					<EditTicketModal />
 					<AddDevModal />
 					<DevListModal />
-					<Logs />
+					<Tickets />
 				</div>
 			</>
 		</Provider>

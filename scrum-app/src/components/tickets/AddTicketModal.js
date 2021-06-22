@@ -1,36 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DevSelectOptions from '../devs/DevSelectOptions';
 import { connect } from 'react-redux';
+import { addTicket } from '../../state/actions/ticketActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { updateLog } from '../../state/actions/logActions';
 
-const EditLogModal = ({ current, updateLog }) => {
+const AddTicketModal = ({ addTicket }) => {
 	const [message, setMessage] = useState('');
 	const [attention, setAttention] = useState(false);
 	const [dev, setDev] = useState('');
-
-	useEffect(() => {
-		if (current) {
-			setMessage(current.message);
-			setAttention(current.attention);
-			setDev(current.dev);
-		}
-	}, [current]);
 
 	const onSubmit = () => {
 		if (message === '' || dev === '') {
 			M.toast({ html: 'Please enter a message and dev' });
 		} else {
-			const updLog = {
-				id: current.id,
+			const newTicket = {
 				message,
 				attention,
 				dev,
 				date: new Date(),
 			};
 
-			updateLog(updLog);
-			M.toast({ html: `Log updated by ${dev}` });
+			addTicket(newTicket);
+
+			M.toast({ html: `Ticket added by ${dev}` });
 
 			// Clear Fields
 			setMessage('');
@@ -40,9 +32,9 @@ const EditLogModal = ({ current, updateLog }) => {
 	};
 
 	return (
-		<div id="edit-log-modal" className="modal" style={modalStyle}>
+		<div id="add-ticket-modal" className="modal" style={modalStyle}>
 			<div className="modal-content">
-				<h4>Enter System Log</h4>
+				<h4>Create Ticket</h4>
 				<div className="row">
 					<div className="input-field">
 						<input
@@ -50,6 +42,7 @@ const EditLogModal = ({ current, updateLog }) => {
 							name="message"
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
+							placeholder="Ticket Message"
 						/>
 					</div>
 				</div>
@@ -63,7 +56,7 @@ const EditLogModal = ({ current, updateLog }) => {
 							onChange={(e) => setDev(e.target.value)}
 						>
 							<option value="" disabled>
-								Select devnician
+								Select Dev
 							</option>
 							<DevSelectOptions />
 						</select>
@@ -105,8 +98,4 @@ const modalStyle = {
 	height: '75%',
 };
 
-const mapStateToProps = (state) => ({
-	current: state.log.current,
-});
-
-export default connect(mapStateToProps, { updateLog })(EditLogModal);
+export default connect(null, { addTicket })(AddTicketModal);
