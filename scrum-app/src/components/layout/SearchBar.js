@@ -1,23 +1,35 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { connect } from 'react-redux';
+import { filterLogs } from '../../state/actions/logActions';
 
-const SearchBar = () => {
+const SearchBar = ({ filterLogs }) => {
+	const text = useRef('');
+
+	const onChange = (e) => {
+		filterLogs(text.current.value);
+	};
+
 	return (
-		<div>
-			<nav style={{ marginBottom: '30px' }} className="blue">
-				<div class="nav-wrapper">
-					<form>
-						<div class="input-field">
-							<input id="search" type="search" required />
-							<label class="label-icon" for="search">
-								<i class="material-icons">search</i>
-							</label>
-							<i class="material-icons">close</i>
-						</div>
-					</form>
-				</div>
-			</nav>
-		</div>
+		<nav style={{ marginBottom: '30px' }} className="blue">
+			<div className="nav-wrapper">
+				<form>
+					<div className="input-field">
+						<input
+							id="search"
+							type="search"
+							placeholder="Search Logs.."
+							ref={text}
+							onChange={onChange}
+						/>
+						<label className="label-icon" htmlFor="search">
+							<i className="material-icons">search</i>
+						</label>
+						<i className="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+		</nav>
 	);
 };
 
-export default SearchBar;
+export default connect(null, { filterLogs })(SearchBar);
