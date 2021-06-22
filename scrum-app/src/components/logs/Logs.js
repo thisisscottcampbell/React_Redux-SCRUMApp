@@ -4,10 +4,9 @@ import LogItem from './LogItem';
 import Preloader from '../layout/Preloader';
 import { getLogs } from '../../state/actions/logActions';
 
-const Logs = ({ log: { logs, loading }, getLogs }) => {
+const Logs = ({ logs: { logs, loading }, getLogs }) => {
 	useEffect(() => {
 		getLogs();
-		// eslint-disable-next-line
 	}, []);
 
 	if (loading || logs === null) {
@@ -29,7 +28,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
 };
 
 const mapStateToProps = (state) => ({
-	log: state.log,
+	logs: state.logs,
 });
 
 export default connect(mapStateToProps, { getLogs })(Logs);
