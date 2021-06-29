@@ -13,7 +13,6 @@ import { store } from './state/store';
 
 const App = () => {
 	useEffect(() => {
-		//init Materialzie
 		M.AutoInit();
 	});
 	return (
