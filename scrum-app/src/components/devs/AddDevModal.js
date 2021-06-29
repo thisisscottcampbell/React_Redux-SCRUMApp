@@ -33,6 +33,7 @@ const AddDevModal = ({ addDev }) => {
 						<input
 							type="text"
 							name="firstName"
+							id="firstName"
 							value={firstName}
 							onChange={(e) => setFirstName(e.target.value)}
 						/>
@@ -47,6 +48,7 @@ const AddDevModal = ({ addDev }) => {
 						<input
 							type="text"
 							name="lastName"
+							id="lastName"
 							value={lastName}
 							onChange={(e) => setLastName(e.target.value)}
 						/>

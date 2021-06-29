@@ -7,7 +7,7 @@ import { StoreWrapper } from '../../../Store';
 
 configure({ adapter: new Adapter() });
 
-it('has a drop down', () => {
+it('has a drop down and two inputs', () => {
 	const wrapped = mount(
 		<StoreWrapper>
 			<AddTicketModal />
